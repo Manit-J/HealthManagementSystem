@@ -8,6 +8,8 @@
         
         <!-- Entity Classes here -->
         <class>com.club.models.Member</class>
+        <class>com.club.models.Room</class>
+        <class>com.club.models.GroupClasses</class>
 
         <properties>
             <!-- Database Connection Settings -->
