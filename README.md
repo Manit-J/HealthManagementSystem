@@ -6,9 +6,9 @@
 3. Copy and paste contents of .env.example into .env file.
 4. Input the values of the url, user and password using the credentials distributed through Discord.
 5. Run the following commands in terminal:
-`export DB_URL=url
-export DB_USER=postgres
-export DB_PASS=yourpassword`
+`export DB_URL=url`
+`export DB_USER=postgres`
+`export DB_PASS=yourpassword`
 6. Run the spring app using `mvn spring-boot:run` command in the terminal.
 7. You should be connected to the db now and any operations on entities should reflect in the db.
 
