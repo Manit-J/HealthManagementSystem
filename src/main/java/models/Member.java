@@ -11,7 +11,7 @@ public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long memberID;
+    private Long memberId;
 
     private String name;
 
@@ -33,7 +33,7 @@ public class Member {
 
 
     public Long getMemberID() {
-        return memberID;
+        return memberId;
     }
 
     public String getName() {
