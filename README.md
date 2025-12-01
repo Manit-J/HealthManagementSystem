@@ -13,4 +13,4 @@
 7. You should be connected to the db now and any operations on entities should reflect in the db.
 
 ## ER Model Diagram
-<img width="1610" height="1049" alt="image" src="https://github.com/user-attachments/assets/0e945958-99f3-4afe-9c29-0573d412baa5" />
+<img width="734" height="438" alt="image" src="https://github.com/user-attachments/assets/084a1b61-3376-4ef9-b82a-7094a591a7ea" />
