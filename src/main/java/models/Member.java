@@ -1,20 +1,7 @@
 package models;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import java.util.*;
 
 @Entity
 @Table(name = "Member")
@@ -32,8 +19,33 @@ private String gender;
 
 private String email;
 
-@OneToMany(mappedBy = "member", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-private List<HealthHistory> healthHistory = new ArrayList<>();
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<FitnessGoal> fitnessGoals = new ArrayList<>();
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "dashboard_id", unique = true)
+    private Dashboard dashboard;
+
+    @OneToMany(mappedBy = "member")
+    private List<HealthHistory> healthHistory = new ArrayList<>();
+
+    @OneToOne(mappedBy = "member")
+    private PTSession ptSession;
+
+    @ManyToMany
+    @JoinTable(
+            name = "member_groupclass",
+            joinColumns = @JoinColumn(name = "member_id"),
+            inverseJoinColumns = @JoinColumn(name = "class_id")
+    )
+    private Set<GroupClass> classes = new HashSet<>();
+
+    @OneToMany(mappedBy = "member")
+    private Set<Registration> registrations = new HashSet<>();
+
+
+    public Member() {
+    }
 
 @ManyToMany(fetch = FetchType.EAGER)
 @JoinTable(
@@ -81,31 +93,15 @@ public void setGender(String gender) {
     this.gender = gender;
 }
 
-public String getEmail() {
-    return email;
-}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-public void setEmail(String email) {
-    this.email = email;
-}
 
-public List<HealthHistory> getHealthHistory() {
-    return healthHistory;
-}
+    public List<FitnessGoal> getFitnessGoals() { return fitnessGoals; }
 
-public void setHealthHistory(List<HealthHistory> healthHistory) {
-    this.healthHistory = healthHistory;
-}
-
-public List<GroupClass> getRegisteredClasses() {
-    return registeredClasses;
-}
-
-public void setRegisteredClasses(List<GroupClass> registeredClasses) {
-    this.registeredClasses = registeredClasses;
-}
-
-public void printDetails() {
-    System.out.println("Member ID: " + memberID + " | Name: " + name + " | Email: " + email);
-}
+    public void addFitnessGoal(FitnessGoal goal) {
+        fitnessGoals.add(goal);
+        goal.setMember(this);
+    }
 }

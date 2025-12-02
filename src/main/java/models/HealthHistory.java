@@ -1,6 +1,6 @@
 package models;
 
-import java.time.LocalDateTime;
+import jakarta.persistence.*;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,14 +11,15 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "HealthHistory")
+@Table(name="HealthHistory")
 public class HealthHistory {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long historyID;
+    private Long id;
 
-    private LocalDateTime timestamp;
+    private LocalDate timestamp;
 
     private int height;
 
@@ -26,18 +27,15 @@ public class HealthHistory {
 
     private int heartRate;
 
-    private double bodyFatPercentage;
-
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
 
-    public HealthHistory() {
-    }
+    public HealthHistory() {}
 
-    public HealthHistory(Member member, int height, int weight, int heartRate, double bodyFatPercentage) {
+    public HealthHistory(LocalDate timestamp, Member member, int height, int weight, int heartRate, int bodyFatPercentage){
+        this.timestamp = timestamp;
         this.member = member;
-        this.timestamp = LocalDateTime.now();
         this.height = height;
         this.weight = weight;
         this.heartRate = heartRate;
@@ -54,6 +52,14 @@ public class HealthHistory {
 
     public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
     }
 
     public int getHeight() {

@@ -1,28 +1,29 @@
 package models;
 
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name="Class")
 public class Class {
 
     @Id
-    private Long memberId; // id of member
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private Long classId; // id of group training session
+    private Long classId; // domain id for the class session
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "dashboard_id", nullable = false)
+    private Dashboard dashboard;
 
     public Class(){}
 
-    public Class(Long memberId, Long classId) {
-        this.memberId = memberId;
+    public Class(Long classId) {
         this.classId = classId;
     }
 
-    public Long getMemberId() {
-        return memberId;
-    }
-
-    public void setMemberId(Long memberId) {
-        this.memberId = memberId;
+    public Long getId() {
+        return id;
     }
 
     public Long getClassId() {

@@ -1,18 +1,13 @@
 package models;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import jakarta.persistence.*;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "GroupClass")
+@Table(name="GroupClass")
 public class GroupClass {
 
     @Id
@@ -25,14 +20,16 @@ public class GroupClass {
 
     private int capacity;
 
-    @ManyToMany(mappedBy = "registeredClasses")
-    private List<Member> registeredMembers = new ArrayList<>();
+    @ManyToMany(mappedBy = "classes")
+    private Set<Member> members = new HashSet<>();
 
-    public GroupClass() {
-    }
+    @OneToMany(mappedBy = "groupClass")
+    private Set<Registration> registrations = new HashSet<>();
 
-    public GroupClass(String className, LocalDateTime timestamp, int capacity) {
-        this.className = className;
+
+    public GroupClass() {}
+    public GroupClass(Long classId, LocalDate timestamp, int capacity) {
+        this.classId = classId;
         this.timestamp = timestamp;
         this.capacity = capacity;
     }
