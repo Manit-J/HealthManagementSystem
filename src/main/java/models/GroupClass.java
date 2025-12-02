@@ -1,38 +1,59 @@
 package models;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
 
-import java.time.LocalDate;
-
+@Entity
+@Table(name = "GroupClass")
 public class GroupClass {
 
     @Id
-    private Long classId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long classID;
 
-    private LocalDate timestamp;
+    private String className;
+
+    private LocalDateTime timestamp;
+
     private int capacity;
 
-    public GroupClass() {}
-    public GroupClass(Long classId, LocalDate timestamp, int capacity) {
-        this.classId = classId;
+    @ManyToMany(mappedBy = "registeredClasses")
+    private List<Member> registeredMembers = new ArrayList<>();
+
+    public GroupClass() {
+    }
+
+    public GroupClass(String className, LocalDateTime timestamp, int capacity) {
+        this.className = className;
         this.timestamp = timestamp;
         this.capacity = capacity;
     }
 
-
-    public Long getClassId() {
-        return classId;
+    public Long getClassID() {
+        return classID;
     }
 
-    public void setClassId(Long classId) {
-        this.classId = classId;
+    public String getClassName() {
+        return className;
     }
 
-    public LocalDate getTimestamp() {
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    public LocalDateTime getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(LocalDate timestamp) {
+    public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
     }
 
@@ -42,5 +63,17 @@ public class GroupClass {
 
     public void setCapacity(int capacity) {
         this.capacity = capacity;
+    }
+
+    public List<Member> getRegisteredMembers() {
+        return registeredMembers;
+    }
+
+    public void setRegisteredMembers(List<Member> registeredMembers) {
+        this.registeredMembers = registeredMembers;
+    }
+
+    public void printDetails() {
+        System.out.println("Class ID: " + classID + " | Name: " + className + " | Capacity: " + capacity);
     }
 }

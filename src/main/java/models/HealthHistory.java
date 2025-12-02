@@ -1,48 +1,59 @@
 package models;
 
+import java.time.LocalDateTime;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
-import java.time.LocalDate;
-
+@Entity
+@Table(name = "HealthHistory")
 public class HealthHistory {
 
     @Id
-    private LocalDate timestamp;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long historyID;
 
-    @Id
-    private Long memberId;
+    private LocalDateTime timestamp;
 
     private int height;
+
     private int weight;
+
     private int heartRate;
-    private int bodyFatPercentage;
 
-    public HealthHistory() {}
+    private double bodyFatPercentage;
 
-    public HealthHistory(LocalDate timestamp, Long memberId, int height, int weight, int heartRate, int bodyFatPercentage){
-        this.timestamp = timestamp;
-        this.memberId = memberId;
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
+
+    public HealthHistory() {
+    }
+
+    public HealthHistory(Member member, int height, int weight, int heartRate, double bodyFatPercentage) {
+        this.member = member;
+        this.timestamp = LocalDateTime.now();
         this.height = height;
         this.weight = weight;
         this.heartRate = heartRate;
         this.bodyFatPercentage = bodyFatPercentage;
     }
 
+    public Long getHistoryID() {
+        return historyID;
+    }
 
-    public LocalDate getTimestamp() {
+    public LocalDateTime getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(LocalDate timestamp) {
+    public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
-    }
-
-    public Long getMemberId() {
-        return memberId;
-    }
-
-    public void setMemberId(Long memberId) {
-        this.memberId = memberId;
     }
 
     public int getHeight() {
@@ -69,11 +80,23 @@ public class HealthHistory {
         this.heartRate = heartRate;
     }
 
-    public int getBodyFatPercentage() {
+    public double getBodyFatPercentage() {
         return bodyFatPercentage;
     }
 
-    public void setBodyFatPercentage(int bodyFatPercentage) {
+    public void setBodyFatPercentage(double bodyFatPercentage) {
         this.bodyFatPercentage = bodyFatPercentage;
+    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
+    public void printDetails() {
+        System.out.println("Log Date: " + timestamp + " | Weight: " + weight + "kg | Heart Rate: " + heartRate);
     }
 }
