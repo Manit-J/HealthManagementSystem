@@ -1,5 +1,7 @@
 # FinalProject-HealthManagementSystem
 
+Video link: https://youtu.be/QCPadnR3y6w
+
 ## Feature Checklist
 - [ ] User Registration
 - [ ] Group Class Registration
