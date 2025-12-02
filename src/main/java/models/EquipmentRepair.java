@@ -1,7 +1,10 @@
 package models;
 
+import jakarta.persistence.*;
 import jakarta.persistence.Id;
 
+@Entity
+@Table(name="EquipmentRepair")
 public class EquipmentRepair {
 
     @Id

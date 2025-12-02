@@ -1,12 +1,15 @@
 package models;
 
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
+@Entity
+@Table(name="RoomBooking")
 public class RoomBooking {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long roomNo;
 
     private String type;

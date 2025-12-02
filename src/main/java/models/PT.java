@@ -1,13 +1,15 @@
 package models;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name="PT")
 public class PT {
 
     @Id
     private Long memberId; // id of member
-
-    @Id
     private Long sessionId; // id of PT session
 
 

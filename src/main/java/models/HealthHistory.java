@@ -1,15 +1,17 @@
 package models;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 import java.time.LocalDate;
 
+@Entity
+@Table(name="HealthHistory")
 public class HealthHistory {
 
     @Id
     private LocalDate timestamp;
-
-    @Id
     private Long memberId;
 
     private int height;

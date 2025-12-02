@@ -1,7 +1,14 @@
 package models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="Dasboard")
 public class Dashboard {
 
+    @Id
     private Long memberId;
     private Long trainerId;
     private String metrics;

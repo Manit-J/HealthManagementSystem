@@ -1,10 +1,13 @@
 package models;
 
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name="Trainer")
 public class Trainer {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long trainerId;
 
     private String name;
