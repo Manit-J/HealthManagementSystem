@@ -1,25 +1,66 @@
-# FinalProject-HealthManagementSystem
+COMP 3005 – Fall 2025
+Final Project: Health & Fitness Club Management System
 
-Video link: https://youtu.be/QCPadnR3y6w
+Group Members:
+- Shaymaa Abu-Dakka
+- Krishna Adhikari
+- manit jawa
 
-## Feature Checklist
-- [ ] User Registration
-- [ ] Group Class Registration
-- [ ] Profile Management
-- [ ] Health History
+Demo Video Link:
+https://www.youtube.com/watch?v=QCPadnR3y6w
 
-- [ ] Member Lookup
-- [ ] Set Availability
+1. Project Overview
+This project implements a full Health and Fitness Club Management System based on the requirements provided. The system supports Members, Trainers, and Administrative Staff. It is built using Java Spring Boot with ORM (Hibernate/JPA) and a PostgreSQL relational database.
 
-- [ ] Billing & Payment
-- [ ] Equipment Management
-- [ ] Command Line Runner
+2. ER Diagram and Relational Mapping
+Our ERD (submitted as ERD.pdf) includes 10 entities and 10 relationships.
+Key entities: Member, Trainer, Availability, FitnessGoal, HealthMetric, GroupClass, PTSession, Room, Equipment, Billing.
 
-## Steps to connect to PostgreSQL DB
+Relationships: Members–HealthMetrics (1-many), Members–Goals (1-many), Trainers–Availability (1-many), Rooms–Classes/Sessions (1-many), Members–GroupClasses (many-to-many), Billing–LineItems (1-many).
+
+3. ORM Integration
+We use Hibernate ORM. Tables are generated automatically. Entity classes define:
+- Primary keys
+- Foreign keys
+- Relationship mappings (OneToMany, ManyToOne, ManyToMany)
+- Automatic schema creation
+
+4. How to Run the Application
+Requirements:
+- Java 17+
+- Maven
+- PostgreSQL
+
+Steps:
+1. Create a DB named: health_management_system
+2. Update application.properties with your DB login.
+3. Run: mvn spring-boot:run
 
 
-## ER Model Diagram
-<img width="734" height="438" alt="image" src="https://github.com/user-attachments/assets/084a1b61-3376-4ef9-b82a-7094a591a7ea" />
+5. Implemented Features
 
-## ER Mapping to Schema
-<img width="2222" height="1098" alt="image" src="https://github.com/user-attachments/assets/d4c00eb0-363b-4ca6-a50c-b8c6ff5911e2" />
+Member:
+- Register new member
+- Update profile/goals
+- Add health metrics (timestamped)
+- Dashboard view
+- Register for group class
+- Book PT session
+
+Trainer:
+- Set availability (overlap validation)
+- Member lookup (case-insensitive)
+
+Administrator:
+- Room booking (conflict prevention)
+- Equipment maintenance tracking
+- Class management
+- Billing + payments
+
+6. Code Structure
+/models – ORM entities  
+/controllers – REST controllers  
+/services – Business logic  
+/repositories – JPA repositories  
+/docs/ERD.pdf – ER model and mapping
+
