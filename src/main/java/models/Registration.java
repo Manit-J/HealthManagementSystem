@@ -1,49 +1,56 @@
 package models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name="Registration")
 public class Registration {
 
     @Id
-    private Long classId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private Long memberId;
+    @ManyToOne
+    @JoinColumn(name = "member_id", nullable = false)
+    private Member member;
 
-    private Long trainerId;
+    @ManyToOne
+    @JoinColumn(name = "class_id", nullable = false)
+    private GroupClass groupClass;
+
+    @ManyToOne
+    @JoinColumn(name = "trainer_id", nullable = false)
+    private Trainer trainer;
 
     public Registration() {}
-    public Registration(Long classId, Long memberId, Long trainerId) {
-        this.classId = classId;
-        this.memberId = memberId;
-        this.trainerId = trainerId;
+    public Registration(Member member, GroupClass groupClass, Trainer trainer) {
+        this.member = member;
+        this.groupClass = groupClass;
+        this.trainer = trainer;
     }
 
 
-    public Long getClassId() {
-        return classId;
+    public GroupClass getGroupClass() {
+        return groupClass;
     }
 
-    public void setClassId(Long classId) {
-        this.classId = classId;
+    public void setGroupClass(GroupClass groupClass) {
+        this.groupClass = groupClass;
     }
 
-    public Long getMemberId() {
-        return memberId;
+    public Member member() {
+        return member;
     }
 
-    public void setMemberId(Long memberId) {
-        this.memberId = memberId;
+    public void setMember(Member member) {
+        this.member = member;
     }
 
-    public Long getTrainerId() {
-        return trainerId;
+    public Trainer getTrainer() {
+        return trainer;
     }
 
-    public void setTrainerId(Long trainerId) {
-        this.trainerId = trainerId;
+    public void setTrainer(Trainer trainer) {
+        this.trainer = trainer;
     }
 }

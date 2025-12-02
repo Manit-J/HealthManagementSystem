@@ -1,10 +1,10 @@
 package models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="GroupClass")
@@ -15,6 +15,13 @@ public class GroupClass {
 
     private LocalDate timestamp;
     private int capacity;
+
+    @ManyToMany(mappedBy = "classes")
+    private Set<Member> members = new HashSet<>();
+
+    @OneToMany(mappedBy = "groupClass")
+    private Set<Registration> registrations = new HashSet<>();
+
 
     public GroupClass() {}
     public GroupClass(Long classId, LocalDate timestamp, int capacity) {

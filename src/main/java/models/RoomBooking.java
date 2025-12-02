@@ -15,15 +15,19 @@ public class RoomBooking {
     private String type;
     private String bookedFor;
     private LocalDate timestamp;
-    private Long adminId;
+
+    @ManyToOne
+    @JoinColumn(name = "admin_id", nullable = false)
+    private Admin admin;
+
 
     public RoomBooking() {}
-    public RoomBooking(Long roomNo, String type, String bookedFor, LocalDate timestamp, Long adminId) {
+    public RoomBooking(Long roomNo, String type, String bookedFor, LocalDate timestamp, Admin admin) {
         this.roomNo = roomNo;
         this.type = type;
         this.bookedFor = bookedFor;
         this.timestamp = timestamp;
-        this.adminId = adminId;
+        this.admin = admin;
     }
 
 
@@ -59,11 +63,7 @@ public class RoomBooking {
         this.timestamp = timestamp;
     }
 
-    public Long getAdminId() {
-        return adminId;
-    }
 
-    public void setAdminId(Long adminId) {
-        this.adminId = adminId;
-    }
+    public Admin getAdmin() { return admin; }
+    public void setAdmin(Admin admin) { this.admin = admin; }
 }

@@ -15,17 +15,21 @@ public class Bill {
     private double amountDue;
     private String paymentMethod;
     private String paymentStatus;
-    private Long adminId;
+
+    @ManyToOne
+    @JoinColumn(name = "admin_id", nullable = false)
+    private Admin admin;
+
 
     public Bill(){}
 
-    public Bill(String serviceType, String invoice, double amountDue, String paymentMethod, String paymentStatus, Long adminId) {
+    public Bill(String serviceType, String invoice, double amountDue, String paymentMethod, String paymentStatus, Admin admin) {
         this.serviceType = serviceType;
         this.invoice = invoice;
         this.amountDue = amountDue;
         this.paymentMethod = paymentMethod;
         this.paymentStatus = paymentStatus;
-        this.adminId = adminId;
+        this.admin = admin;
     }
 
 
@@ -77,11 +81,11 @@ public class Bill {
         this.paymentStatus = paymentStatus;
     }
 
-    public Long getAdminId() {
-        return adminId;
+    public Admin getAdmin() {
+        return admin;
     }
 
-    public void setAdminId(Long adminId) {
-        this.adminId = adminId;
+    public void setAdmin(Admin admin) {
+        this.admin = admin;
     }
 }

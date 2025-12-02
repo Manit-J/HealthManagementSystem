@@ -1,8 +1,6 @@
 package models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
@@ -11,19 +9,27 @@ import java.time.LocalDate;
 public class PTSession {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long sessionId;
 
     private LocalDate timestamp;
-    private Long trainerId;
-    private Long memberId;
+
+    @OneToOne
+    @JoinColumn(name = "trainer_id", unique = true, nullable = false)
+    private Trainer trainer;
+
+
+    @OneToOne
+    @JoinColumn(name = "member_id", unique = true)
+    private Member member;
 
     public PTSession() {}
 
-    public PTSession(Long sessionId, LocalDate timestamp, Long trainerId, Long memberId) {
+    public PTSession(Long sessionId, LocalDate timestamp, Trainer trainer, Member member) {
         this.sessionId = sessionId;
         this.timestamp = timestamp;
-        this.trainerId = trainerId;
-        this.memberId = memberId;
+        this.trainer = trainer;
+        this.member = member;
     }
 
 
@@ -43,19 +49,19 @@ public class PTSession {
         this.timestamp = timestamp;
     }
 
-    public Long getTrainerId() {
-        return trainerId;
+    public Trainer getTrainer() {
+        return trainer;
     }
 
-    public void setTrainerId(Long trainerId) {
-        this.trainerId = trainerId;
+    public void setTrainer(Trainer trainer) {
+        this.trainer = trainer;
     }
 
-    public Long getMemberId() {
-        return memberId;
+    public Member member() {
+        return member;
     }
 
-    public void setMemberId(Long memberId) {
-        this.memberId = memberId;
+    public void setMember(Member member) {
+        this.member = member;
     }
 }

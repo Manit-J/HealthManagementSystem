@@ -4,43 +4,36 @@ import jakarta.persistence.*;
 import jakarta.persistence.Id;
 
 @Entity
-@Table(name="EquipmentRepair")
+@Table(name = "EquipmentRepair")
 public class EquipmentRepair {
 
     @Id
-    private Long equipmentId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String issue;
     private String repairTask;
 
+    @ManyToOne
+    @JoinColumn(name = "equipment_id", nullable = false)
+    private Equipment equipment;
+
     public EquipmentRepair() {}
-    public EquipmentRepair(Long equipmentId, String issue, String repairTask) {
-        this.equipmentId = equipmentId;
+
+    public EquipmentRepair(String issue, String repairTask, Equipment equipment) {
         this.issue = issue;
         this.repairTask = repairTask;
+        this.equipment = equipment;
     }
 
+    public Long getId() { return id; }
 
-    public Long getEquipmentId() {
-        return equipmentId;
-    }
+    public String getIssue() { return issue; }
+    public void setIssue(String issue) { this.issue = issue; }
 
-    public void setEquipmentId(Long equipmentId) {
-        this.equipmentId = equipmentId;
-    }
+    public String getRepairTask() { return repairTask; }
+    public void setRepairTask(String repairTask) { this.repairTask = repairTask; }
 
-    public String getIssue() {
-        return issue;
-    }
-
-    public void setIssue(String issue) {
-        this.issue = issue;
-    }
-
-    public String getRepairTask() {
-        return repairTask;
-    }
-
-    public void setRepairTask(String repairTask) {
-        this.repairTask = repairTask;
-    }
+    public Equipment getEquipment() { return equipment; }
+    public void setEquipment(Equipment equipment) { this.equipment = equipment; }
 }

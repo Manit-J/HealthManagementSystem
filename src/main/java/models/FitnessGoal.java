@@ -1,41 +1,34 @@
 package models;
 
 import jakarta.persistence.*;
-import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
+import models.Member;
 
 @Entity
 @Table(name = "FitnessGoal")
 public class FitnessGoal {
 
     @Id
-    private Long memberId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;  // surrogate primary key
 
     private String fitnessGoal;
 
+    @ManyToOne
+    @JoinColumn(name = "member_id", nullable = false)
+    private Member member;
 
-    public FitnessGoal() {
-    }
+    public FitnessGoal() {}
 
-    public FitnessGoal(Long memberId, String goal) {
-        this.memberId = memberId;
-        this.fitnessGoal = goal;
-    }
-
-    public String getFitnessGoal() {
-        return fitnessGoal;
-    }
-
-    public void setFitnessGoal(String fitnessGoal) {
+    public FitnessGoal(String fitnessGoal) {
         this.fitnessGoal = fitnessGoal;
     }
 
-    public Long getMemberId() {
-        return memberId;
-    }
+    // getters and setters
+    public Long getId() { return id; }
 
-    public void setMemberId(Long memberId) {
-        this.memberId = memberId;
-    }
+    public String getFitnessGoal() { return fitnessGoal; }
+    public void setFitnessGoal(String fitnessGoal) { this.fitnessGoal = fitnessGoal; }
+
+    public Member getMember() { return member; }
+    public void setMember(Member member) { this.member = member; }
 }
