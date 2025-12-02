@@ -1,27 +1,34 @@
 package models;
 
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
+@Entity
+@Table(name="HealthHistory")
 public class HealthHistory {
 
-    @Id
-    private LocalDate timestamp;
 
     @Id
-    private Long memberId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private LocalDate timestamp;
 
     private int height;
     private int weight;
     private int heartRate;
     private int bodyFatPercentage;
 
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
+
     public HealthHistory() {}
 
-    public HealthHistory(LocalDate timestamp, Long memberId, int height, int weight, int heartRate, int bodyFatPercentage){
+    public HealthHistory(LocalDate timestamp, Member member, int height, int weight, int heartRate, int bodyFatPercentage){
         this.timestamp = timestamp;
-        this.memberId = memberId;
+        this.member = member;
         this.height = height;
         this.weight = weight;
         this.heartRate = heartRate;
@@ -37,12 +44,12 @@ public class HealthHistory {
         this.timestamp = timestamp;
     }
 
-    public Long getMemberId() {
-        return memberId;
+    public Member getMember() {
+        return member;
     }
 
-    public void setMemberId(Long memberId) {
-        this.memberId = memberId;
+    public void setMember(Member member) {
+        this.member = member;
     }
 
     public int getHeight() {

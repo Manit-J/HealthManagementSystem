@@ -1,30 +1,36 @@
 package models;
 
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name="TrainerAvailability")
 public class TrainerAvailability {
 
     @Id
-    private Long trainerId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id; // surrogate PK
 
-    private String timeSlots; // should be listed for the upcoming week, e.g. M2TO3PM
+    private String timeSlots;           // e.g., M2TO3PM
+    private String recurringTimeSlots;  // e.g., weekly slots
 
-    private String recurringTimeSlots; // should be listed like timeSlots above
+    @ManyToOne
+    @JoinColumn(name = "trainer_id", nullable = false)
+    private Trainer trainer;
 
     public TrainerAvailability() {}
-    public TrainerAvailability(Long trainerId, String timeSlots, String recurringTimeSlots) {
-        this.trainerId = trainerId;
+    public TrainerAvailability(Trainer trainer, String timeSlots, String recurringTimeSlots) {
+        this.trainer = trainer;
         this.timeSlots = timeSlots;
         this.recurringTimeSlots = recurringTimeSlots;
     }
 
 
-    public Long getTrainerId() {
-        return trainerId;
+    public Trainer getTrainer() {
+        return trainer;
     }
 
-    public void setTrainerId(Long trainerId) {
-        this.trainerId = trainerId;
+    public void setTrainer(Trainer trainer) {
+        this.trainer = trainer;
     }
 
     public String getTimeSlots() {
