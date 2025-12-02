@@ -1,17 +1,17 @@
 # FinalProject-HealthManagementSystem
 
 ## Feature Checklist
-- [] User Registration
-- [] Group Class Registration
-- [] Profile Management
-- [] Health History
+- [ ] User Registration
+- [ ] Group Class Registration
+- [ ] Profile Management
+- [ ] Health History
 
-- [] Member Lookup
-- [] Set Availability
+- [ ] Member Lookup
+- [ ] Set Availability
 
-- [] Billing & Payment
-- [] Equipment Management
-- [] Command Line Runner
+- [ ] Billing & Payment
+- [ ] Equipment Management
+- [ ] Command Line Runner
 
 ## Steps to connect to PostgreSQL DB
 
