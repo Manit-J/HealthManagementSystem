@@ -3,21 +3,23 @@ package models;
 import java.time.LocalDate;
 import java.util.*;
 
+import jakarta.persistence.*;
+
 @Entity
 @Table(name = "Member")
 public class Member {
 
-  @Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Long memberID;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long memberID;
 
-private String name;
+    private String name;
 
-private LocalDate dateOfBirth;
+    private LocalDate dateOfBirth;
 
-private String gender;
+    private String gender;
 
-private String email;
+    private String email;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<FitnessGoal> fitnessGoals = new ArrayList<>();
@@ -44,61 +46,60 @@ private String email;
     private Set<Registration> registrations = new HashSet<>();
 
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "Registration",
+            joinColumns = @JoinColumn(name = "member_id"),
+            inverseJoinColumns = @JoinColumn(name = "class_id")
+    )
+    private List<GroupClass> registeredClasses = new ArrayList<>();
+
     public Member() {
     }
 
-@ManyToMany(fetch = FetchType.EAGER)
-@JoinTable(
-    name = "Registration",
-    joinColumns = @JoinColumn(name = "member_id"),
-    inverseJoinColumns = @JoinColumn(name = "class_id")
-)
-private List<GroupClass> registeredClasses = new ArrayList<>();
+    public Member(String name, LocalDate dateOfBirth, String gender, String email) {
+        this.name = name;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.email = email;
+    }
 
-public Member() {
-}
+    public Long getMemberID() {
+        return memberID;
+    }
 
-public Member(String name, LocalDate dateOfBirth, String gender, String email) {
-    this.name = name;
-    this.dateOfBirth = dateOfBirth;
-    this.gender = gender;
-    this.email = email;
-}
+    public String getName() {
+        return name;
+    }
 
-public Long getMemberID() {
-    return memberID;
-}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-public String getName() {
-    return name;
-}
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
 
-public void setName(String name) {
-    this.name = name;
-}
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
 
-public LocalDate getDateOfBirth() {
-    return dateOfBirth;
-}
+    public String getGender() {
+        return gender;
+    }
 
-public void setDateOfBirth(LocalDate dateOfBirth) {
-    this.dateOfBirth = dateOfBirth;
-}
-
-public String getGender() {
-    return gender;
-}
-
-public void setGender(String gender) {
-    this.gender = gender;
-}
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
 
-    public List<FitnessGoal> getFitnessGoals() { return fitnessGoals; }
+    public List<FitnessGoal> getFitnessGoals() {
+        return fitnessGoals;
+    }
 
     public void addFitnessGoal(FitnessGoal goal) {
         fitnessGoals.add(goal);

@@ -4,7 +4,46 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9dcbfa6-716e-46ff-935c-6200261561f9" name="Changes" comment="" />
+    <list default="true" id="d9dcbfa6-716e-46ff-935c-6200261561f9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/repositories/AdminRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/repositories/BillRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/repositories/DashboardRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/repositories/EquipmentRepairRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/repositories/EquipmentRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/repositories/FitnessGoalRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/repositories/GroupClassRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/repositories/HealthHistoryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/repositories/MemberRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/repositories/PTSessionRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/repositories/RegistrationRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/repositories/RoomBookingRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/repositories/TrainerAvailabilityRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/repositories/TrainerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/apps/MemberFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/MemberFunctions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/trainer/TrainerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/TrainerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/trainer/TrainerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/TrainerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/trainer/TrainerController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/trainer/TrainerService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/Admin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/Bill.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/Class.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/Dashboard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/Equipment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/EquipmentRepair.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/FitnessGoal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/GroupClass.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/HealthHistory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/Member.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/PT.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/PTSession.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/Registration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/RoomBooking.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/Trainer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/TrainerAvailability.class" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,35 +56,44 @@
   &quot;associatedIndex&quot;: 2
 }</component>
   <component name="ProjectId" id="3657dLVxObnMYDGyf5UPlqYJekr" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;6-trainer-class&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.Final-Project [clean].executor": "Run",
+    "Maven.Final-Project [package].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "vcs.Git",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Uni Tests, Assignments, Labs\COMP 3005\Final Project\src\main\java\app\trainer" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.28238.7" />
-        <option value="bundled-js-predefined-d6986cc7102b-a71380e98a7c-JavaScript-IU-252.28238.7" />
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
       </set>
     </attachedChunks>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="d9dcbfa6-716e-46ff-935c-6200261561f9" name="Changes" comment="" />
@@ -57,6 +105,7 @@
       <workItem from="1764444532113" duration="545000" />
       <workItem from="1764445100077" duration="176000" />
       <workItem from="1764445312130" duration="1465000" />
+      <workItem from="1764649814560" duration="1008000" />
     </task>
     <servers />
   </component>

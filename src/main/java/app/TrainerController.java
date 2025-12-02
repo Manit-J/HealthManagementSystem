@@ -1,4 +1,4 @@
-package apps.trainer;
+package app;
 
 import groupId.*;
 import org.springframework.web.bind.annotation.*;
