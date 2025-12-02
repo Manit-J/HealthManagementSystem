@@ -2,7 +2,13 @@ package models;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name="HealthHistory")
@@ -16,9 +22,10 @@ public class HealthHistory {
     private LocalDate timestamp;
 
     private int height;
+
     private int weight;
+
     private int heartRate;
-    private int bodyFatPercentage;
 
     @ManyToOne
     @JoinColumn(name = "member_id")
@@ -35,12 +42,15 @@ public class HealthHistory {
         this.bodyFatPercentage = bodyFatPercentage;
     }
 
+    public Long getHistoryID() {
+        return historyID;
+    }
 
-    public LocalDate getTimestamp() {
+    public LocalDateTime getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(LocalDate timestamp) {
+    public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
     }
 
@@ -76,11 +86,23 @@ public class HealthHistory {
         this.heartRate = heartRate;
     }
 
-    public int getBodyFatPercentage() {
+    public double getBodyFatPercentage() {
         return bodyFatPercentage;
     }
 
-    public void setBodyFatPercentage(int bodyFatPercentage) {
+    public void setBodyFatPercentage(double bodyFatPercentage) {
         this.bodyFatPercentage = bodyFatPercentage;
+    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
+    public void printDetails() {
+        System.out.println("Log Date: " + timestamp + " | Weight: " + weight + "kg | Heart Rate: " + heartRate);
     }
 }

@@ -11,9 +11,13 @@ import java.util.Set;
 public class GroupClass {
 
     @Id
-    private Long classId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long classID;
 
-    private LocalDate timestamp;
+    private String className;
+
+    private LocalDateTime timestamp;
+
     private int capacity;
 
     @ManyToMany(mappedBy = "classes")
@@ -30,20 +34,23 @@ public class GroupClass {
         this.capacity = capacity;
     }
 
-
-    public Long getClassId() {
-        return classId;
+    public Long getClassID() {
+        return classID;
     }
 
-    public void setClassId(Long classId) {
-        this.classId = classId;
+    public String getClassName() {
+        return className;
     }
 
-    public LocalDate getTimestamp() {
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    public LocalDateTime getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(LocalDate timestamp) {
+    public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
     }
 
@@ -53,5 +60,17 @@ public class GroupClass {
 
     public void setCapacity(int capacity) {
         this.capacity = capacity;
+    }
+
+    public List<Member> getRegisteredMembers() {
+        return registeredMembers;
+    }
+
+    public void setRegisteredMembers(List<Member> registeredMembers) {
+        this.registeredMembers = registeredMembers;
+    }
+
+    public void printDetails() {
+        System.out.println("Class ID: " + classID + " | Name: " + className + " | Capacity: " + capacity);
     }
 }
